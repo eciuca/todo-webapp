@@ -1,37 +1,29 @@
 package com.github.eciuca.todo.controllers;
 
+import com.github.eciuca.todo.services.TodoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class TodoController {
 
-    private final List<String> todos;
-
-    public TodoController() {
-        todos = new ArrayList<>();
-        todos.add("todo 1");
-        todos.add("todo 2");
-        todos.add("todo 3");
-    }
-
+    @Autowired
+    private TodoService todoService;
 
     @RequestMapping(value = {"/todos", "/index"}, method = RequestMethod.GET)
     public String showTodos(Model model) {
-        model.addAttribute("todos", todos);
+        model.addAttribute("todos", todoService.getAllTodos());
 
         return "todos";
     }
 
     @RequestMapping(value = {"/todos/{id}/delete"}, method = RequestMethod.GET)
     public String deleteTodo(@PathVariable int id) {
-        todos.remove(id);
+        todoService.deleteTodo(id);
 
         return "redirect:/todos.html";
     }

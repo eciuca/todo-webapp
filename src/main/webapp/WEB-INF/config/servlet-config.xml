@@ -17,4 +17,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
+    <bean id="todoService" class="com.github.eciuca.todo.services.TodoServiceImpl">
+    </bean>
+
 </beans>

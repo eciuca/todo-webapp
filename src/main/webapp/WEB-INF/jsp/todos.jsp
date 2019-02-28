@@ -54,9 +54,9 @@
         </div>
         <div class="row">
             <ul class="list-group">
-                <c:forEach items="${todos}" var="todo" varStatus="loop">
-                    <li class="list-group-item">${todo}
-                        <a href="<c:url value='todos/${loop.index}/delete.html' />">x</a>
+                <c:forEach items="${todos}" var="todo">
+                    <li class="list-group-item">${todo.name}
+                        <a href="<c:url value='todos/${todo.id}/delete.html' />">x</a>
                     </li>
                 </c:forEach>
             </ul>
