@@ -54,8 +54,10 @@
         </div>
         <div class="row">
             <ul class="list-group">
-                <c:forEach items="${todos}" var="todo">
-                    <li class="list-group-item">${todo}</li>
+                <c:forEach items="${todos}" var="todo" varStatus="loop">
+                    <li class="list-group-item">${todo}
+                        <a href="<c:url value='todos/${loop.index}/delete.html' />">x</a>
+                    </li>
                 </c:forEach>
             </ul>
         </div>
