@@ -17,14 +17,6 @@ public class TodoServiceImpl implements TodoService {
                 .collect(Collectors.toList());
     }
 
-    private Todo createTodo(int i) {
-        Todo todo = new Todo();
-        todo.setId(new Random().nextInt());
-        todo.setName("todo " + i);
-
-        return todo;
-    }
-
     @Override
     public List<Todo> getAllTodos() {
         return todos;
@@ -36,5 +28,21 @@ public class TodoServiceImpl implements TodoService {
                 .filter(todo -> todo.getId() == id)
                 .findFirst()
                 .ifPresent(todos::remove);
+    }
+
+    @Override
+    public Todo createNewTodo() {
+        Todo todo = createTodo(todos.size());
+        todos.add(todo);
+
+        return todo;
+    }
+
+    private Todo createTodo(int i) {
+        Todo todo = new Todo();
+        todo.setId(new Random().nextInt());
+        todo.setName("todo " + i);
+
+        return todo;
     }
 }

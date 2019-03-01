@@ -43,9 +43,15 @@
 <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
     <div class="container">
-        <div class="row">
+        <div class="d-flex flex-row">
 
-            <h1 class="mt-5">My todos</h1>
+            <h1 class="mt-5 p-1">My todos</h1>
+
+            <form class="mt-5 p-1" action="todos/new">
+                <button type="submit" class="btn btn-outline-dark btn-circle btn-add-todo">
+                    <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+                </button>
+            </form>
             <%--<p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and--%>
             <%--CSS. A--%>
             <%--fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt;--%>

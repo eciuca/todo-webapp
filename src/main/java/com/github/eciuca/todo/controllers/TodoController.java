@@ -21,6 +21,13 @@ public class TodoController {
         return "todos";
     }
 
+    @RequestMapping(value = {"/todos/new"}, method = RequestMethod.GET)
+    public String createTodo() {
+        todoService.createNewTodo();
+
+        return "redirect:/todos";
+    }
+
     @RequestMapping(value = {"/todos/{id}/delete"}, method = RequestMethod.GET)
     public String deleteTodo(@PathVariable int id) {
         todoService.deleteTodo(id);
