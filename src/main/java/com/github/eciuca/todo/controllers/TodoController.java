@@ -25,6 +25,6 @@ public class TodoController {
     public String deleteTodo(@PathVariable int id) {
         todoService.deleteTodo(id);
 
-        return "redirect:/todos.html";
+        return "redirect:/todos";
     }
 }
