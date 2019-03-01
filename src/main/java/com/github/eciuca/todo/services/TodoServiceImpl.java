@@ -1,12 +1,14 @@
 package com.github.eciuca.todo.services;
 
 import com.github.eciuca.todo.model.Todo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Service
 public class TodoServiceImpl implements TodoService {
 
     private List<Todo> todos;

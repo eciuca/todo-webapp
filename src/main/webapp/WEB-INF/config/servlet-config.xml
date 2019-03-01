@@ -11,7 +11,7 @@
     <mvc:annotation-driven/>
     <mvc:resources mapping="/css/**" location="WEB-INF/css/" />
 
-    <context:component-scan base-package="com.github.eciuca.todo.controllers"/>
+    <context:component-scan base-package="com.github.eciuca.todo.controllers, com.github.eciuca.todo.services" />
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,7 +20,7 @@
     </bean>
 
 
-    <bean id="todoService" class="com.github.eciuca.todo.services.TodoServiceImpl">
-    </bean>
+    <!--<bean id="todoService" class="com.github.eciuca.todo.services.TodoServiceImpl">-->
+    <!--</bean>-->
 
 </beans>
