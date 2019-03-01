@@ -1,11 +1,20 @@
 package com.github.eciuca.todo.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TODOS")
 public class Todo {
 
-    private int id;
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column
     private String name;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -8,7 +8,7 @@ public interface TodoService {
 
     List<Todo> getAllTodos();
 
-    void deleteTodo(int id);
+    void deleteTodo(long id);
 
     Todo createNewTodo();
 }

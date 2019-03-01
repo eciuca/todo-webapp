@@ -1,50 +1,34 @@
 package com.github.eciuca.todo.services;
 
 import com.github.eciuca.todo.model.Todo;
+import com.github.eciuca.todo.repositories.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Service
 public class TodoServiceImpl implements TodoService {
 
-    private List<Todo> todos;
-
-    public TodoServiceImpl() {
-        todos = IntStream.range(1, 11)
-                .mapToObj(this::createTodo)
-                .collect(Collectors.toList());
-    }
+    @Autowired
+    private TodoRepository repository;
 
     @Override
     public List<Todo> getAllTodos() {
-        return todos;
+        return repository.findAll();
     }
 
     @Override
-    public void deleteTodo(int id) {
-        todos.stream()
-                .filter(todo -> todo.getId() == id)
-                .findFirst()
-                .ifPresent(todos::remove);
+    public void deleteTodo(long id) {
+        repository.delete(id);
     }
 
     @Override
     public Todo createNewTodo() {
-        Todo todo = createTodo(todos.size());
-        todos.add(todo);
-
-        return todo;
-    }
-
-    private Todo createTodo(int i) {
         Todo todo = new Todo();
-        todo.setId(new Random().nextInt());
-        todo.setName("todo " + i);
+        todo.setName("todo " + new Random().nextInt());
 
-        return todo;
+        return repository.save(todo);
     }
 }
