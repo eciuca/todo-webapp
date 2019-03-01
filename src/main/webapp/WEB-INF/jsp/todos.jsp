@@ -6,6 +6,7 @@
     <title>Todos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -25,15 +26,15 @@
                     <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <%--<li class="nav-item">--%>
-                    <%--<a class="nav-link" href="#">Link</a>--%>
+                <%--<a class="nav-link" href="#">Link</a>--%>
                 <%--</li>--%>
                 <%--<li class="nav-item">--%>
-                    <%--<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
+                <%--<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
                 <%--</li>--%>
             </ul>
             <%--<form class="form-inline mt-2 mt-md-0">--%>
-                <%--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">--%>
-                <%--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+            <%--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">--%>
+            <%--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
             <%--</form>--%>
         </div>
     </nav>
@@ -46,21 +47,55 @@
 
             <h1 class="mt-5">My todos</h1>
             <%--<p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and--%>
-                <%--CSS. A--%>
-                <%--fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt;--%>
-                    <%--.container</code>.--%>
+            <%--CSS. A--%>
+            <%--fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt;--%>
+            <%--.container</code>.--%>
             <%--</p>--%>
             <%--<p>Back to <a href="/docs/4.3/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>--%>
         </div>
-        <div class="row">
-            <ul class="list-group">
-                <c:forEach items="${todos}" var="todo">
-                    <li class="list-group-item">${todo.name}
-                        <a href="todos/${todo.id}/delete">x</a>
-                    </li>
-                </c:forEach>
-            </ul>
+        <%--<div class="row">--%>
+        <%--<form class="form-inline">--%>
+        <%--<div class="form-group mb-2">--%>
+        <%--<label for="add-todo" class="sr-only">Email</label>--%>
+        <%--<input type="text" class="form-control-plaintext" id="add-todo" placeholder="New todo">--%>
+        <%--</div>--%>
+        <%--<div class="form-group mx-sm-3 mb-2">--%>
+        <%--<label for="inputPassword2" class="sr-only">Password</label>--%>
+        <%--<input type="password" class="form-control" id="inputPassword2" placeholder="Password">--%>
+        <%--</div>--%>
+        <%--<button type="submit" class="btn btn-primary mb-2">Confirm identity</button>--%>
+        <%--</form>--%>
+        <%--</div>--%>
+        <div class="d-flex flex-wrap">
+
+            <c:forEach items="${todos}" var="todo">
+                <div class="p-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="p-1">
+
+                                    <h5 class="card-title">${todo.name}</h5>
+                                </div>
+                                <div class="p-1 ml-auto">
+                                    <form action="todos/${todo.id}/delete">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
+    </div>
     </div>
 </main>
 
